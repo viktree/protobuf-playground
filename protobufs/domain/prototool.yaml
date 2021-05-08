@@ -1,0 +1,39 @@
+# Paths to exclude when searching for Protobuf files.
+#excludes:
+#  -
+
+# Protoc directives.
+protoc:
+  version: 3.6.1
+  allow_unused_imports: true
+  includes:
+    - /usr/include
+
+# Lint directives.
+lint:
+  group: uber2
+
+# Breaking change detector directives.
+break:
+  # Include beta packages in breaking change detection.
+  include_beta: true
+  # Allow stable packages to depend on beta packages.
+  allow_beta_deps: true
+# Code generation directives.
+generate:
+  plugins:
+    - name: js
+      flags: import_style=commonjs,binary
+      output: ../../lib/node
+    - name: ts
+      flags: service=grpc-node
+      output: ../../lib/node
+      path: protoc-gen-ts
+    - name: grpc
+      output: ../../lib/node
+      path: grpc_node_plugin
+    - name: descriptor_set
+      output: ../../lib/proto/descriptor
+      file_suffix: pb
+      include_imports: true
+      include_source_info: true
