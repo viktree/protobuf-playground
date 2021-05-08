@@ -1,0 +1,46 @@
+Arguments: 
+  /usr/local/Cellar/node@12/12.22.1_1/bin/node /usr/local/Cellar/yarn/1.22.10/libexec/bin/yarn.js add @viktree/protobuf_playground
+
+PATH: 
+  /usr/local/Cellar/nodenv/1.4.0/libexec:/Users/vikram.v/.nodenv/shims:/Users/vikram.v/.nix-profile/bin:/Users/vikram.v/.zplug/repos/zplug/zplug/bin:/Users/vikram.v/.zplug/bin:/Users/vikram.v/.emacs.d/bin:/usr/local/opt/node@12/bin:/usr/local/opt/helm@2/bin:/Users/vikram.v/programs/google-cloud-sdk/bin:/Users/vikram.v/.nix-profile/bin:/run/current-system/sw/bin:/nix/var/nix/profiles/default/bin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  12.22.1
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://npm.pkg.github.com/@viktree%2fprotobuf_playground: npm package "protobuf_playground" does not exist under owner "viktree"
+      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:66988:18)
+      at Request.self.callback (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:140749:22)
+      at Request.emit (events.js:314:20)
+      at Request.<anonymous> (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:141721:10)
+      at Request.emit (events.js:314:20)
+      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:141643:12)
+      at Object.onceWrapper (events.js:420:28)
+      at IncomingMessage.emit (events.js:326:22)
+      at endReadableNT (_stream_readable.js:1241:12)
+      at processTicksAndRejections (internal/process/task_queues.js:84:21)
+
+npm manifest: 
+  {
+    "name": "example",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
