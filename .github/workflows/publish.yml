@@ -9,12 +9,24 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
         with:
-          node-version: 12
-      - run: yarn install
-      - run: ./scripts/code_gen.bash
+          node-version: 12.x
+
+      - name: Generate code from *.proto
+        run: ./scripts/code_gen.bash
+
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v7
+        with:
+          author_name: Vikram Venkataramanan
+          author_email: vikram.venkataramanan@mail.utoronto.ca
+          message: 'generate node files'
+          add: '*.{js,ts}'
 
   publish-gpr:
     needs: build
@@ -26,11 +38,9 @@ jobs:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
           scope: '@viktree'
-      - run: cd lib/node
-      - run: yarn install
       - run: git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com" && git config --global user.name "$GITHUB_ACTOR"
-      - run: yarn version --minor
-      - run: git push --tags && git push
-      - run: yarn publish
+      - run: cd lib/node && yarn version --minor
+      - run: cd lib/node && git push --tags && git push
+      - run: cd lib/node && yarn publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
