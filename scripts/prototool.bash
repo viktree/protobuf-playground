@@ -6,7 +6,11 @@ PROTOTOOL_CMD="${DOCKER_IMG_EXEC} prototool"
 
 function print_usage() {
 	cat <<EOF
-Usage: ./code_gen.bash [lint|generate] [protoname]
+Usage: bash prototool.bash [lint|generate] [protoname]
+
+	example:
+		$ bash prototool.bash lint protobufs/domain/greeter/api
+
 EOF
 }
 
