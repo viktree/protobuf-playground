@@ -6,9 +6,8 @@ PROTOTOOL_CMD="${DOCKER_IMG_EXEC} prototool"
 
 function print_usage() {
 	cat <<EOF
-Usage: ./code_gen.bash [--help|protoname]
-		--help                     Displays this help
+Usage: ./code_gen.bash [lint|generate] [protoname]
 EOF
 }
 
-$PROTOTOOL_CMD generate protobufs/domain/greeter/api
+$PROTOTOOL_CMD "$1" "$2"

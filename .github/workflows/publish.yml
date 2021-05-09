@@ -17,16 +17,27 @@ jobs:
         with:
           node-version: 12.x
 
+      - name: Remove existing code
+        run: make clean
+
       - name: Generate code from *.proto
-        run: ./scripts/code_gen.bash
+        run: make generate
 
       - name: Commit changes
         uses: EndBug/add-and-commit@v7
         with:
           author_name: Vikram Venkataramanan
           author_email: vikram.venkataramanan@mail.utoronto.ca
-          message: 'generate node files'
-          add: 'lib/*'
+          message: "generate proto files"
+          add: "lib/proto/*"
+
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v7
+        with:
+          author_name: Vikram Venkataramanan
+          author_email: vikram.venkataramanan@mail.utoronto.ca
+          message: "generate node files"
+          add: "lib/node/*"
 
   publish-gpr:
     needs: build
@@ -37,7 +48,7 @@ jobs:
         with:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
-          scope: '@viktree'
+          scope: "@viktree"
       - run: git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com" && git config --global user.name "$GITHUB_ACTOR"
       - run: cd lib/node && yarn version --minor
       - run: git pull
