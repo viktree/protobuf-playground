@@ -4,7 +4,7 @@ Uses github actions to generate code off of \*.proto file
 
 ## Getting Started
 
-Modify the protobuf file in `protobufs/domain/greeter/api` and push your changes to github.
+Modify the protobuf file in `protobufs/domain/greeter/api/api.proto` and push your changes to github.
 The generated code will exist in the `lib` folder.
 
 ### Deploying
